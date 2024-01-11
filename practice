@@ -1,0 +1,16 @@
+
+https://www.techbeamers.com/sql-query-questions-answers-for-practice/
+/* Write an SQL query to print details of the Workers who are also Managers.*/
+
+/*Solve with Inner Join*/
+SELECT * FROM `Worker` W
+INNER JOIN `Title` T
+ON W.worker_id = T.worker_ref_id
+AND T.worker_title in ('Manager');
+
+/*My own anser: solve with subquery*/
+SELECT * FROM `Worker`
+WHERE `Worker_ID` IN (
+SELECT `Worker_ref_id` FROM `Title`
+WHERE `Worker_title` = 'Manager')
+;
